@@ -8,3 +8,24 @@
 
 # LOCAL SERVER
 python -m http.server
+
+# BROWSER SUPPORT
+With BabelJS I can use latest Javascript. See https://babeljs.io/
+Babel figure out what changes if any are needed for your user’s browsers.
+On encountering a browser that does not support ie. async/await,
+Babel's polyfill can automatically provide fallbacks that work in older browsers.
+
+# CHOOSING RIGHT ASYNCHRONOUS APPROACH
+See https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Choosing_the_right_approach
+
+# DOM API terminology
+Element node: An element, as it exists in the DOM.
+Root node: The top node in the tree, which in the case of HTML is always the HTML node (other markup vocabularies like SVG and custom XML will have different root elements).
+Child node: A node directly inside another node.
+Descendant node: A node anywhere inside another node.
+Parent node: A node which has another node inside it.
+Sibling nodes: Nodes that sit on the same level in the DOM tree.
+Text node: A node containing a text string.
+
+
+
