@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Custom promises</title>
+  </head>
+  <body>
+    <script>
+      function timeoutPromise(message, interval) {
+        return new Promise((resolve, reject) => {
+          if (message === '' || typeof message !== 'string') {
+            reject('Message is empty or not a string')
+          } else if (interval < 0 || typeof interval !== 'number') {
+            reject('Interval is negative or not a number')
+          } else {
+            setTimeout(function () {
+              resolve(message)
+            }, interval)
+          }
+        })
+      }
+
+      timeoutPromise('asdf', 1000)
+        .then(window.alert)
+        .catch(e => console.log(e))
+    </script>
+  </body>

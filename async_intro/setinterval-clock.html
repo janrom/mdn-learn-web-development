@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple setInterval clock</title>
+    <style>
+      p {
+        font-family: sans-serif;
+      }
+
+      div button {
+        float: left;
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+      <p id="stopWatch">00 : 00 : 00</p>
+    <div>
+      <input type="button" id="startBtn" value="Start">
+      <input type="button" id="stopBtn" value="Stop" disabled>
+      <input type="button" id="resetBtn" value="Reset" disabled>
+    </div>        
+    <script>
+      const stopWatch = document.getElementById('stopWatch')
+      const startBtn = document.getElementById('startBtn')
+      const stopBtn = document.getElementById('stopBtn')
+      const resetBtn = document.getElementById('resetBtn')
+
+      let startedTimestamp = 0      
+      let startedSeconds = 0
+      let stoppedSeconds = 0
+      let stoppedSecondsTotal = 0
+      let startedSecondsID
+      let stoppedSecondsID
+
+      function displayTime() {
+        let currentTimestamp = Date.now() / 1000        
+
+        startedSeconds = currentTimestamp - startedTimestamp - stoppedSecondsTotal
+        
+        let hours = Number.parseInt(startedSeconds / 3600)
+        let minutes = Number.parseInt((startedSeconds % 3600) / 60)
+        let seconds = Number.parseInt((startedSeconds % 3600) % 60)
+
+        let displayHours = (hours < 10) ? '0'+hours : hours
+        let displayMinutes = (minutes < 10) ? '0'+minutes : minutes
+        let displaySeconds = (seconds < 10) ? '0'+seconds : seconds
+
+        stopWatch.textContent = displayHours + ' : ' + displayMinutes + ' : ' + displaySeconds
+      }
+
+      startBtn.addEventListener('click', function () {
+        if (startedTimestamp === 0) {
+          startedTimestamp = Date.now() / 1000
+        }
+
+        if (stoppedSeconds > 0) {
+          clearInterval(stoppedSecondsID)
+          stoppedSecondsTotal += stoppedSeconds
+          stoppedSeconds = 0
+        }
+        
+        startedSecondsID = setInterval(displayTime, 1000)
+
+        this.disabled = true        
+        stopBtn.disabled = false
+        resetBtn.disabled = true
+      })
+
+      stopBtn.addEventListener('click', function() {
+        clearInterval(startedSecondsID)
+        
+        stoppedSecondsID = setInterval((start) => {
+            let current = Date.now() / 1000
+            stoppedSeconds = current - start        
+          }, 
+          1000, 
+          Date.now() / 1000
+        );
+
+        this.disabled = true
+        startBtn.disabled = false
+        resetBtn.disabled = false
+      })
+
+      resetBtn.addEventListener('click', function() {        
+        startedTimestamp = Date.now() / 1000
+        stoppedSecondsTotal = 0
+        displayTime()
+        
+        startBtn.disabled = false
+        stopBtn.disabled = true
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Blob</title>
+  </head>
+  <body>
+    <script>
+      window.fetch('stuff/coffee.jpg')
+        .then(response => response.blob())
+        .then(myBlob => {
+          const objectURL = URL.createObjectURL(myBlob)
+          const image = document.createElement('img')
+          image.src = objectURL
+          document.body.appendChild(image)
+        })
+        .catch(e => {
+          console.log('Fething failed with message: ' + e.message)
+        })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "number-guessing-game",
+  "version": "0.1.0",
+  "description": "MDN's introduction to JS, first splash part",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Janne Romppanen <janneromppanen@fastmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "13.1.0"
+  }
+}

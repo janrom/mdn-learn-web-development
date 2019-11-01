@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Our superheroes</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+      <header>
+
+      </header>
+
+      <section>
+
+      </section>
+
+    <script>
+      var header = document.querySelector('header');
+      var section = document.querySelector('section');
+
+      let requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json'
+      let request = new XMLHttpRequest()
+      request.open('GET', requestURL)
+      request.responseType = 'text' // set to 'text' for automatically parsing to Javascript object
+      request.send()
+      
+      request.onload = function() {
+        let superheroes = request.response
+        console.log(superheroes)
+        superheroes = JSON.parse(superheroes) // needed if responseType = 'text'
+        console.log(superheroes)
+        populateHeader(superheroes)
+        showHeroes(superheroes)
+      }
+
+      function populateHeader(jsonObj) {
+        let myH1 = document.createElement('h1')
+        myH1.textContent = jsonObj['squadName']
+        header.appendChild(myH1)
+
+        let myPara = document.createElement('p')
+        myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed']
+        header.appendChild(myPara)
+      }
+
+      function showHeroes(jsonObj) {
+        let heroes = jsonObj['members']
+
+        heroes.forEach(hero => {
+          let article = document.createElement('article')
+          
+          let h2 = document.createElement('h2')
+          let p1 = document.createElement('p')
+          let p2 = document.createElement('p')
+          let p3 = document.createElement('p')
+          let ul = document.createElement('ul')
+          
+          h2.textContent = hero.name
+          p1.textContent = 'Secret identity: ' + hero.secretIdentity
+          p2.textContent = 'Age: ' + hero.age
+          p3.textContent = 'Superpowers: '
+          hero.powers.forEach(power => {
+            let li = document.createElement('li')
+            li.textContent = power
+            ul.appendChild(li)
+          })
+
+          article.appendChild(h2)
+          article.appendChild(p1)
+          article.appendChild(p2)
+          article.appendChild(p3)
+          article.appendChild(ul)
+
+          section.appendChild(article)          
+        });
+      }
+    </script>
+  </body>
+</html>

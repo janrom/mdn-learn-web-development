@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Multiple promises</title>
+  </head>
+  <body>    
+    <script>
+      async function fetchAndDecoce (url) {
+        let response = window.fetch(url)
+        let content = null
+        
+        if (response.headers.get('content-type') === 'image/jpeg') {
+          content = await response.blob()
+        } else if (response.headers.get('content-type') === 'text/plain') {
+          content = await response.text()
+        }
+        
+        return content
+      }
+
+      const a = fetchAndDecoce('stuff/coffee.jpg')
+      const b = fetchAndDecoce('stuff/tea.jpg')
+      const c = fetchAndDecoce('stuff/description.txt')
+
+      Promise.all([a, b, c]).then(values => {
+        values.forEach(value => {
+          if (typeof value === 'object') {
+            const objectURL = URL.createObjectURL(value)
+            const img = document.createElement('img')
+            img.src = objectURL
+            document.body.appendChild(img)
+          } else if (typeof value === 'string') {
+            const p = document.createElement('p')
+            p.textContent = value
+            document.body.append(p)
+          }
+        })
+      })
+    </script>
+  </body>  
+</html>

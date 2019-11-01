@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Custom promises</title>
+  </head>
+  <body>
+    <script>
+      async function fetchBlob () {
+        const response = await window.fetch('stuff/coffee.jpg')
+        const myBlob = await response.blob()
+        return myBlob
+      }
+
+      function showBlob (blob) {
+        const objectURL = URL.createObjectURL(blob)
+        const image = document.createElement('img')
+        image.src = objectURL
+        document.body.appendChild(image)
+      }
+
+      fetchBlob()
+        .then(showBlob)
+        .catch(console.log)
+    </script>
+  </body>

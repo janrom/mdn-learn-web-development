@@ -1,0 +1,10 @@
+# LOADING SCRIPTS
+- add javascript-file loading script-tag inside head-section
+    - use defer or async -flags
+        - use defer when scripts must be downloaded in specific order (is they are dependent from each other)
+        - use async if scripts are independent
+    - putting script-tags before closing html-tag is old school, which have performance issues when site uses lot's of javascript
+        (scripts are blocked until whole html dom is loaded).
+
+# LOCAL SERVER
+python -m http.server

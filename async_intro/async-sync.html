@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple async sync example</title>
+  </head>
+  <body>
+    <script>
+      console.log ('Starting');
+      let image;
+      let creditsContainer
+      let credits1
+      let credits2
+      let link1
+      let link2
+
+      fetch('coffee.jpg').then((response) => {
+        console.log('It worked :)')
+        return response.blob();
+      }).then((myBlob) => {
+        let objectURL = URL.createObjectURL(myBlob);
+        image = document.createElement('img');
+        image.src = objectURL;
+        document.body.appendChild(image);
+
+        creditsContainer = document.createElement('p')
+        
+        credits1 = document.createElement('span')
+        credits1.textContent = 'Photo by: '
+        link1 = document.createElement('a')
+        link1.setAttribute('href', 'https://www.freeimages.com/photographer/say32fancy-47762')
+        link1.text = 'se hui(shirley) Kim'
+
+        credits2 = document.createElement('span')
+        credits2.textContent = ' from '
+        link2 = document.createElement('a')
+        link2.setAttribute('href', 'https://freeimages.com/')
+        link2.text = 'FreeImages'        
+        
+        creditsContainer.appendChild(credits1)
+        creditsContainer.appendChild(link1)
+        creditsContainer.appendChild(credits2)
+        creditsContainer.appendChild(link2)
+
+        document.body.appendChild(creditsContainer)
+
+        console.log ('All done!');
+      }).catch((error) => {
+        console.log('There has been a problem with your fetch operation: ' + error.message);
+      });      
+    </script>
+  </body>
+</html>

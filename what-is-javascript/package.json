@@ -1,0 +1,18 @@
+{
+  "name": "what-is-javascript",
+  "version": "1.0.0",
+  "description": "A project for MDN's learn Javascript tutorial",
+  "main": "./src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "js",
+    "mdn"
+  ],
+  "author": "Janne Romppanen <janneromppanen@fastmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^13.1.0"
+  }
+}

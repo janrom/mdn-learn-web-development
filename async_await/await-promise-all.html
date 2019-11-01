@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Multiple promises</title>
+  </head>
+  <body>    
+    <script>
+      function fetchAndDecoce (url) {
+        return window.fetch(url).then(response => {
+          if (response.headers.get('content-type') === 'image/jpeg') {
+            return response.blob()
+          } else if (response.headers.get('content-type') === 'text/plain') {
+            return response.text()
+          }
+        }).catch(e => {
+          console.log('Fetch operation failed with message: ' + e.message)
+        })
+      }
+
+      async function displayContent() {
+        const a = fetchAndDecoce('stuff/coffee.jpg')
+        const b = fetchAndDecoce('stuff/tea.jpg')
+        const c = fetchAndDecoce('stuff/description.txt')
+
+        const values = await Promise.all([a, b, c])
+
+        values.forEach(value => {
+          if (typeof value === 'object') {
+            const objectURL = URL.createObjectURL(value)
+            const img = document.createElement('img')
+            img.src = objectURL
+            document.body.appendChild(img)
+          } else if (typeof value === 'string') {
+            const p = document.createElement('p')
+            p.textContent = value
+            document.body.append(p)
+          }
+        })
+      }
+
+      displayContent()
+        .catch(console.log)
+    </script>
+  </body>  
+</html>

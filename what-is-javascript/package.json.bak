@@ -1,0 +1,13 @@
+{
+    "name": "Learn Javascript",
+    "author": {
+        "name": "Janne Romppanen",
+        "email": "janneromppanen@fastmail.com"
+    },
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "A project for MDN's learn Javascript tutorial",
+    "devDependencies": {
+ 
+    }
+}
