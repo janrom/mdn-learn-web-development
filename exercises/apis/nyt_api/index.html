@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>NYT article search</title>
+    <script src="main.js" defer></script>
+    <script src="https://kit.fontawesome.com/a34e6cd9ae.js" crossorigin="anonymous"></script>
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="container">
+        <h1>New York Times article search</h1>
+        <form>
+          <p>
+            <lable for="search">Enter search word:</lable>
+            <input type="text" id="search" required>
+          </p>
+          <p>
+            <label for="begin-date">Begin date:</label>
+            <input type="date" id="begin-date">
+          </p>
+          <p>
+            <label for="end-date">End date:</label>
+            <input type="date" id="end-date">
+          </p>
+          <div>
+            <div>              
+              <input id="newest" type="radio" name="sort" value="newest" checked>
+              <label for="newest">newest</label>
+            </div>
+            <div>              
+              <input id="oldest" type="radio" name="sort" value="oldest">
+              <label for="oldest">oldest</label>
+            </div>
+            <div>              
+              <input id="relevance" type="radio" name="sort" value="relevance">
+              <label for="relevance">relevance</label>
+            </div>
+          </div>
+          <p>
+            <button id="submit" type="submit">Search</button>
+          </p>            
+        </form>        
+        <div id="articles"></div>
+        <div id="page-browse-buttons">          
+          <button id="prevPage" type="button" disabled>Newer</button>
+          <button id="nextPage" type="button" disabled>Older</button>
+        </div>
+        <div id="spinner">
+          <i class="fas fa-spinner fa-5x fa-spin"></i>
+        </div>
+        <p id="copyright"></p>
+    </div>    
+  </body>  
+</html>
