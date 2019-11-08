@@ -8,7 +8,8 @@ const pageBrowse = document.querySelector('#pageBrowse')
 const nextPage = document.querySelector('#nextPage')
 const prevPage = document.querySelector('#prevPage')
 
-const apiKey = 'AIzaSyCLFx_NY0fRF92TRu6FWDcVvKXL_yNsgoM'
+// ADD API KEY
+let apiKey
 let pageToken
 const maxResults = 3
 
