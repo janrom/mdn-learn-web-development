@@ -1,0 +1,82 @@
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  width: 60%;
+  margin: auto;
+  padding: 0;
+}
+
+#ui {
+  height:5em;
+  background-color: lightpink;
+  margin: 1em 0;
+  padding: 1em 2em;
+}
+
+#searchForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+#searchForm button {
+  height: 4em;
+  width: 6em;
+  background-color: lightgreen;
+}
+
+#results {
+  width: 790px;
+  margin: auto;  
+  text-align: center;  
+}
+
+.pageBrowse {  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 790px;
+  margin: 2em auto;
+}
+
+#pageBrowse button {
+  width: 6em;
+  height: 3em;
+  background-color: lightpink;
+}
+
+.hide {
+  display: none;
+}
+
+#results.headerLeft {
+  float: left;
+  width: 20%;
+}
+
+#results.headerRight {
+  float: right;
+  width: 80%;
+}
+
+#results.playerHolder {
+  clear: both;
+  margin: 1em 0;
+}
+
+#results.resultContainer {
+  width: 640px;
+  margin: auto;        
+}
+
+#results > ul li {
+  list-style-type: none;
+  margin: 2em 0;
+  padding: 2em;
+  background-color: lightblue
+}

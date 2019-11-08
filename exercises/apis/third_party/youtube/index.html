@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Youtube player</title>
+    <link href="style.css" rel="stylesheet">
+    <script async defer src="https://apis.google.com/js/api.js"></script>    
+    <script async defer src="https://www.youtube.com/iframe_api"></script>
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <h1>YouTube search</h1>
+      <div id="ui">
+        <form id="searchForm">
+          <div>
+            <label for="searchInput">Search: </label>
+            <input type="text" id="searchInput">
+          </div>
+          <div id="types">
+            <div>
+              <input type="checkbox" id="channel" name="channel" value="channel" checked>
+              <label for="channel">channel</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="playlist" name="playlist" value="playlist" checked>
+              <label for="playlist">playlist</label><br></div>
+            <div>
+              <input type="checkbox" id="video" name="video" value="video" checked>
+              <label for="video">video</label>            
+            </div>
+          </div>          
+          <button id="submit" type="button">Go</button>          
+        </form>
+      </div>
+      <div id="results"></div>
+      <div id="pageBrowse">
+        <button id="prevPage">Previous</button>
+        <button id="nextPage">Next</button>
+      </div>      
+    </div>
+  </body>
+</html>
