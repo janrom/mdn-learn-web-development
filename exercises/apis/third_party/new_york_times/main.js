@@ -1,5 +1,7 @@
 const api = 'https://api.nytimes.com/svc/search/v2/articlesearch.json'
-const key = 'qixFZQintqSWqiUFybldd3EsqNZGxyZa'
+
+// ADD API KEY
+let key
 let pageNum = 0
 
 const articles = document.querySelector('#articles')
