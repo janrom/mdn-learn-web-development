@@ -22,7 +22,7 @@ function init () {
 }
 
 function initDatabase () {
-  const openDBRequest = window.indexedDB.open(dbName, 4)
+  const openDBRequest = window.indexedDB.open(dbName, 5)
 
   openDBRequest.onsuccess = (event) => {
     db = event.target.result
@@ -123,4 +123,12 @@ function storeVideoToClient (mp4Blob, webmBlob, name) {
     event.stopPropagation()
     console.log(event.target.error)
   }
+}
+
+// Register Service Worker for controlling asset loading from server or client's cache
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('/indexed-db-video-store/sw.js') // relative path from server origin, ie. http://localhost:8000/indexed-db-video-store/sw.js
+    .then(response => console.log('Service Worker registered.'))
+    .catch(reject => console.log(reject))
 }
